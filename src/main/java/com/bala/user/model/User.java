@@ -33,6 +33,13 @@ public class User implements Serializable{
     private String password;
     @Column(name = "salt",nullable = false)
     private String salt;
+    //头像
+    @Column
+    private String avatar;
+    //电子邮箱
+    @Column
+    private String email;
+
 
     public User() {
         super();
@@ -81,5 +88,21 @@ public class User implements Serializable{
 
     public void setSalt(String salt) {
         this.salt = salt;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
