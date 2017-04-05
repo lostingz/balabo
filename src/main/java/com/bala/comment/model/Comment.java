@@ -20,8 +20,6 @@ import com.bala.core.hibernate.pojos.BaseData;
 @Entity
 public class Comment extends BaseData implements Serializable {
     private static final Long serialVersionUID = 1L;
-    @Column
-    private Integer cid;
     //评论人uid
     @Column
     private Integer uid;
@@ -36,14 +34,6 @@ public class Comment extends BaseData implements Serializable {
     //设备
     @Column
     private String device;
-
-    public Integer getCid() {
-        return cid;
-    }
-
-    public void setCid(Integer cid) {
-        this.cid = cid;
-    }
 
     public Integer getUid() {
         return uid;

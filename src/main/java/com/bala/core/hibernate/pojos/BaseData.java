@@ -7,7 +7,11 @@ package com.bala.core.hibernate.pojos;
 import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import com.bala.core.hibernate.type.DataStatus;
 
@@ -17,6 +21,11 @@ import com.bala.core.hibernate.type.DataStatus;
  */
 @MappedSuperclass
 public class BaseData {
+    @Id
+    @GeneratedValue(generator = "paymentableGenerator")
+    @GenericGenerator(name = "paymentableGenerator", strategy = "uuid")
+    @Column(name = "id",nullable = false,length = 32)
+    private String id;
     @Column
     private Integer create_time;
     @Column
@@ -25,6 +34,14 @@ public class BaseData {
     @Enumerated(EnumType.ORDINAL)
     @Column 
     private DataStatus status;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public Integer getCreate_time() {
         return create_time;

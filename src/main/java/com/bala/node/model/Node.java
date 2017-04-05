@@ -19,8 +19,6 @@ import com.bala.core.hibernate.pojos.BaseData;
 public class Node extends BaseData implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Column
-    private Integer nid;
     //父节点id
     @Column
     private Integer pid;
@@ -39,14 +37,6 @@ public class Node extends BaseData implements Serializable {
     //帖子数
     @Column
     private Integer topics;
-
-    public Integer getNid() {
-        return nid;
-    }
-
-    public void setNid(Integer nid) {
-        this.nid = nid;
-    }
 
     public Integer getPid() {
         return pid;

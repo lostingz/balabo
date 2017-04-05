@@ -20,8 +20,6 @@ import com.bala.core.hibernate.pojos.BaseData;
 @Entity
 public class Topic extends BaseData implements Serializable{
     private static final long serialVersionUID = 1L;
-    @Column
-    private Integer tid;
     //发布人
     @Column
     private Integer uid;
@@ -43,14 +41,6 @@ public class Topic extends BaseData implements Serializable{
     // 帖子权重
     @Column
     private Double weight;
-
-    public Integer getTid() {
-        return tid;
-    }
-
-    public void setTid(Integer tid) {
-        this.tid = tid;
-    }
 
     public Integer getUid() {
         return uid;

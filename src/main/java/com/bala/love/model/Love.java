@@ -10,31 +10,23 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.bala.core.hibernate.pojos.BaseData;
+
 /**
  * @author lostingz<a href="mailto:18710833123@163.com">lostingz</a>
  * @version $Id$
  */
 @Table(name = "love")
 @Entity
-public class Love implements Serializable {
+public class Love extends BaseData implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Column
-    private Integer id;
     @Column
     private Integer tid;
     @Column
     private Integer uid;
 
     public Love(){}
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Integer getTid() {
         return tid;
