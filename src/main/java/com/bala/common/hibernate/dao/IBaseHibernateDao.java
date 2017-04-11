@@ -2,7 +2,7 @@
  * lostingz
  * Created on 2016年7月8日
  */
-package com.bala.core.hibernate.dao;
+package com.bala.common.hibernate.dao;
 
 import java.util.List;
 

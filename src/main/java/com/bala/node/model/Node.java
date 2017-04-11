@@ -9,7 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Table;
 
-import com.bala.core.hibernate.pojos.BaseData;
+import com.bala.common.hibernate.pojos.BaseData;
 
 /**
  * @author lostingz<a href="mailto:18710833123@163.com">lostingz</a>
@@ -21,7 +21,7 @@ public class Node extends BaseData implements Serializable {
     private static final long serialVersionUID = 1L;
     //父节点id
     @Column
-    private Integer pid;
+    private String pid;
     //节点名称
     @Column
     private String title;
@@ -38,11 +38,11 @@ public class Node extends BaseData implements Serializable {
     @Column
     private Integer topics;
 
-    public Integer getPid() {
+    public String getPid() {
         return pid;
     }
 
-    public void setPid(Integer pid) {
+    public void setPid(String pid) {
         this.pid = pid;
     }
 

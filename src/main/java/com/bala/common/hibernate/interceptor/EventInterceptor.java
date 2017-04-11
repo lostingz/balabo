@@ -2,7 +2,7 @@
  * Chsi
  * Created on 2017年03月06日
  */
-package com.bala.core.hibernate.interceptor;
+package com.bala.common.hibernate.interceptor;
 
 import java.io.Serializable;
 

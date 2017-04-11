@@ -2,7 +2,7 @@
  * lostingz
  * Created on 2016年7月11日
  */
-package com.bala.core.hibernate.listener;
+package com.bala.common.hibernate.listener;
 
 import org.hibernate.event.internal.DefaultSaveOrUpdateEventListener;
 import org.hibernate.event.spi.SaveOrUpdateEvent;

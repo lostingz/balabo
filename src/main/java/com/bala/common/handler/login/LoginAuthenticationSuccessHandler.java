@@ -2,7 +2,7 @@
  * lostingz
  * Created on 2016年7月7日
  */
-package com.bala.core.handler.login;
+package com.bala.common.handler.login;
 
 import java.io.IOException;
 

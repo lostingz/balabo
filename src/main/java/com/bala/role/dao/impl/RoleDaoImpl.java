@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.bala.core.hibernate.dao.BaseHibernateDao;
+import com.bala.common.hibernate.dao.BaseHibernateDao;
 import com.bala.role.dao.RoleDao;
 import com.bala.role.model.Role;
 

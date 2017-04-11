@@ -1,19 +1,19 @@
 CREATE TABLE `topic` (
-  `tid` int(10) NOT NULL AUTO_INCREMENT,
-  `uid` int(10) NOT NULL COMMENT '发布人',
-  `nid` int(10) NOT NULL COMMENT '所属节点',
+  `id` varchar(32) NOT NULL,
+  `uid` varchar(32) NOT NULL COMMENT '发布人',
+  `nid` varchar(32) NOT NULL COMMENT '所属节点',
   `title` varchar(50) CHARACTER SET utf8mb4 DEFAULT '' COMMENT '帖子标题',
   `content` text CHARACTER SET utf8mb4 COMMENT '帖子内容',
-  `is_top` tinyint(2) DEFAULT '0' COMMENT '是否置顶',
-  `is_essence` tinyint(2) DEFAULT '0' COMMENT '是否精华帖',
+  `is_top` int(2) DEFAULT '0' COMMENT '是否置顶',
+  `is_essence` int(2) DEFAULT '0' COMMENT '是否精华帖',
   `weight` double(10,2) DEFAULT '0.00' COMMENT '帖子权重',
   `create_time` int(10) NOT NULL COMMENT '帖子创建时间',
   `update_time` int(10) NOT NULL COMMENT '最后更新时间',
-  `status` tinyint(2) NOT NULL DEFAULT '0' COMMENT '0:正常 1:删除',
-  PRIMARY KEY (`tid`)
+  `status` int(2) NOT NULL DEFAULT '0' COMMENT '0:正常 1:删除',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `topic` (`tid`, `uid`, `nid`, `title`, `content`, `is_top`, `is_essence`, `weight`, `create_time`, `update_time`, `status`)
+INSERT INTO `topic` (`id`, `uid`, `nid`, `title`, `content`, `is_top`, `is_essence`, `weight`, `create_time`, `update_time`, `status`)
 VALUES
   (2,3,7,'怎样提高程序员男朋友的情商？','因为男票情商不高，所以屡次想要通过调情拉高他的情商，结果却是屡屡被他蠢哭了（有时又觉得傻傻分不清楚蛮可爱）…虽然事后他也会努力地哄我并承认自己很蠢的事实→_→但一直不见情商进步啊…于是乎想让他找宿友讨教撒，结果他说我不搞基啊……！妈蛋老子让你搞基了吗让你跟宿友学习学习！（再次蠢哭）……哎我是一直不信IT男就会情商低的，毕竟见过不少IT情圣，看在他也说会努力的份上，我还不想放弃治疗他……所以恳请大侠们帮他一起提高情商喲⊙﹏⊙\r\n我是认真的！！！',0,0,23.59,1460470218,1460639610,1),
   (3,2,8,'分享一个网站，可以推送高清晰度视频到百度云盘','http://lightingnine.com \r\n\r\n想试试自己能有耐性做一个事情做到多久和多好，于是就有了这个网站。可以推送油管最高清晰度的视频到百度云盘…… 目前刚开始做，不足很多，大家轻拍 \r\n\r\n欢迎大家关注微博和多提意见，哈哈',0,0,22.90,1460470563,1460470563,1),
@@ -44,7 +44,7 @@ VALUES
 
 
 CREATE TABLE `topic_count` (
-  `tid` int(10) NOT NULL,
+  `id` VARCHAR(32) NOT NULL,
   `views` int(10) DEFAULT '0',
   `loves` int(10) DEFAULT '0',
   `favorites` int(10) DEFAULT '0',
@@ -52,50 +52,23 @@ CREATE TABLE `topic_count` (
   `sinks` int(10) DEFAULT '0',
   `create_time` int(10) NOT NULL COMMENT '评论时间',
   `update_time` int(10) DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`tid`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-INSERT INTO `t_topiccount` (`tid`, `views`, `loves`, `favorites`, `comments`, `sinks`, `create_time`)
-VALUES
-  (1,198,1,2,6,0,1460469846),
-  (2,62,2,0,2,0,1460470218),
-  (3,20,0,0,0,0,1460470563),
-  (4,30,0,0,1,0,1460470806),
-  (5,11,0,0,0,0,1460471180),
-  (6,38,0,0,1,0,1460471443),
-  (7,63,0,0,2,0,1460472036),
-  (8,44,0,0,2,0,1460472442),
-  (9,64,2,1,1,0,1460473545),
-  (10,25,0,0,0,0,1460640058),
-  (11,42,0,0,1,0,1460640734),
-  (12,77,0,0,5,0,1460735048),
-  (13,45,1,0,2,0,1460767138),
-  (14,30,1,0,0,0,1460804567),
-  (15,67,2,2,1,0,1460890017),
-  (16,78,2,2,2,0,1460956833),
-  (17,42,2,1,2,0,1460993728),
-  (20,63,2,1,3,0,1461070232),
-  (21,30,0,0,1,0,1461070977),
-  (22,43,3,1,3,0,1461072699),
-  (23,24,1,1,2,0,1461117478),
-  (24,29,0,0,1,10,1461121843),
-  (25,50,1,0,5,0,1461129372),
-  (26,37,3,0,4,0,1461218344),
-  (27,38,0,0,1,0,1461289113);
-
-CREATE TABLE `t_comment` (
-  `cid` int(10) NOT NULL AUTO_INCREMENT,
-  `uid` int(10) NOT NULL COMMENT '评论人uid',
-  `to_uid` int(10) NOT NULL COMMENT '被评论人uid',
-  `tid` int(10) NOT NULL COMMENT '帖子id',
+CREATE TABLE `comment` (
+  `id` VARCHAR(32) NOT NULL,
+  `uid` VARCHAR(32) NOT NULL COMMENT '评论人uid',
+  `to_uid` VARCHAR(32) NOT NULL COMMENT '被评论人uid',
+  `tid` VARCHAR(32) NOT NULL COMMENT '帖子id',
   `content` text CHARACTER SET utf8mb4 NOT NULL COMMENT '评论内容',
   `device` varchar(255) DEFAULT 'pc' COMMENT '设备',
   `create_time` int(10) NOT NULL COMMENT '评论时间',
   `update_time` int(10) DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`cid`)
+  `status` int(2) NOT NULL DEFAULT '0' COMMENT '0:正常 1:删除',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `t_comment` (`cid`, `uid`, `to_uid`, `tid`, `content`, `device`, `create_time`)
+INSERT INTO comment (`id`, `uid`, `to_uid`, `tid`, `content`, `device`, `create_time`)
 VALUES
   (7,1,3,2,'和你男朋友搞基的就是我','pc',1460639477),
   (8,7,1,1,'沙发~','pc',1460639591),
@@ -148,9 +121,9 @@ VALUES
   (55,1,10,27,'我来说说Java的。\r\n\r\n[HTMLFilter](https://github.com/biezhi/blade/blob/master/blade-kit%2Fsrc%2Fmain%2Fjava%2Fblade%2Fkit%2Ftext%2FHTMLFilter.java) 这个类完成了XSS (Cross Site Scripting)的防止注入，你也可以使用Jsoup里的[方法](https://jsoup.org/cookbook/cleaning-html/whitelist-sanitizer)来进行过滤。\r\n\r\n过滤器不过是控制了到底在哪一层去处理脚本拦截，实现可以通过如上2种方法。\r\n\r\n我们来试试\r\n\r\n<script>alert(\'java-china.org\');</script>\r\n\r\n再来试试markdwon\r\n\r\n```html\r\n<script>alert(\'java-china.org\');</script>\r\n```','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36',1461289782);
 
 
-CREATE TABLE `t_node` (
-  `nid` int(10) NOT NULL AUTO_INCREMENT,
-  `pid` int(10) NOT NULL DEFAULT '0' COMMENT '父节点id',
+CREATE TABLE `node` (
+  `id` VARCHAR(32) NOT NULL,
+  `pid` VARCHAR(32) NOT NULL DEFAULT '0' COMMENT '父节点id',
   `title` varchar(30) DEFAULT NULL COMMENT '节点名称',
   `description` varchar(255) DEFAULT NULL COMMENT '节点描述',
   `slug` varchar(50) NOT NULL COMMENT '节点英文简写',
@@ -158,11 +131,11 @@ CREATE TABLE `t_node` (
   `topics` int(10) DEFAULT '0' COMMENT '帖子数',
   `create_time` int(10) NOT NULL COMMENT '创建时间',
   `update_time` int(10) NOT NULL,
-  `status` tinyint(2) NOT NULL DEFAULT '0' COMMENT '0:正常 1:删除',
-  PRIMARY KEY (`nid`)
+  `status` int(2) NOT NULL DEFAULT '0' COMMENT '0:正常 1:删除',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `t_node` (`nid`, `pid`, `title`, `description`, `slug`, `pic`, `topics`, `create_time`, `update_time`, `status`)
+INSERT INTO node (`id`, `pid`, `title`, `description`, `slug`, `pic`, `topics`, `create_time`, `update_time`, `status`)
 VALUES
   (1,0,'分享与探索','分享与探索','','',0,1457933734,1459596711,0),
   (2,0,'Java','Java','','',0,1457933734,1459519169,0),
@@ -212,3 +185,4 @@ VALUES
   (47,1,'互联网','','internet','',0,1461138846,1461138846,0),
   (48,1,'音乐','分享和音乐有关的一切','music','node/music/MBQX/9694.png',1,1461218252,1461335069,0);
 
+ALTER TABLE bala.topic_count ADD status int(2) NOT NULL DEFAULT '0';

@@ -5,12 +5,17 @@
 package com.bala.topic.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Table;
 
-import com.bala.core.hibernate.pojos.BaseData;
+import org.hibernate.annotations.Type;
+
+import com.bala.common.hibernate.pojos.BaseData;
 
 /**
  * @author lostingz<a href="mailto:18710833123@163.com">lostingz</a>
@@ -22,15 +27,17 @@ public class Topic extends BaseData implements Serializable{
     private static final long serialVersionUID = 1L;
     //发布人
     @Column
-    private Integer uid;
+    private String uid;
     //所属节点
     @Column
-    private Integer nid;
+    private String nid;
     //帖子标题
     @Column
     private String title;
     //帖子内容
     @Column
+    @Basic(fetch = FetchType.LAZY)
+    @Type(type="text")
     private String content;
     //是否置顶
     @Column
@@ -42,19 +49,19 @@ public class Topic extends BaseData implements Serializable{
     @Column
     private Double weight;
 
-    public Integer getUid() {
+    public String getUid() {
         return uid;
     }
 
-    public void setUid(Integer uid) {
+    public void setUid(String uid) {
         this.uid = uid;
     }
 
-    public Integer getNid() {
+    public String getNid() {
         return nid;
     }
 
-    public void setNid(Integer nid) {
+    public void setNid(String nid) {
         this.nid = nid;
     }
 
@@ -96,5 +103,9 @@ public class Topic extends BaseData implements Serializable{
 
     public void setWeight(Double weight) {
         this.weight = weight;
+    }
+
+    public static void main(String[] args) {
+        System.out.println((new Date().getTime()));
     }
 }

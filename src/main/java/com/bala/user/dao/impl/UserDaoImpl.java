@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
-import com.bala.core.hibernate.dao.BaseHibernateDao;
+import com.bala.common.hibernate.dao.BaseHibernateDao;
 import com.bala.user.dao.UserDao;
 import com.bala.user.model.User;
 import com.google.common.base.Preconditions;

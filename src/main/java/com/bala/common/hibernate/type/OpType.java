@@ -2,7 +2,7 @@
  * lostingz
  * Created on 2016年7月11日
  */
-package com.bala.core.hibernate.type;
+package com.bala.common.hibernate.type;
 
 /**
  * @author lostingz<a href="mailto:18710833123@163.com">lostingz</a>

@@ -2,7 +2,7 @@
  * lostingz
  * Created on 2016年7月8日
  */
-package com.bala.core.lock;
+package com.bala.common.lock;
 
 /**
  * @author lostingz<a href="mailto:18710833123@163.com">lostingz</a>

@@ -11,7 +11,9 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bala.common.response.JsonResult;
 import com.bala.security.type.LoginErrorType;
 
 
@@ -28,13 +30,18 @@ public class LoginController {
      * 登录入口
      */
     @RequestMapping(value = {"/login"})
-    public String login(@RequestParam(required = false) String error) {
+    @ResponseBody
+    public JsonResult login(@RequestParam(required = false) String error) {
+        JsonResult result=new JsonResult();
+        result=result.successResult("login success");
         for (LoginErrorType loginErrorType : LoginErrorType.values()) {
             if (StringUtils.equals(loginErrorType.getCode(), error)) {
                 log.info(loginErrorType.getDesc());
+                result=result.errorResult(loginErrorType.getDesc());
+                break;
             }
         }
-        return "public/index";
+        return result;
     }
 
     /**

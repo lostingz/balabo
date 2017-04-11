@@ -77,7 +77,7 @@ http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
 		<property name="entityInterceptor" ref="hibernateEventInterceptor"/>
 	</bean>
 	
-	<bean id="hibernateEventInterceptor" class="com.bala.core.hibernate.interceptor.EventInterceptor"/>
+	<bean id="hibernateEventInterceptor" class="com.bala.common.hibernate.interceptor.EventInterceptor"/>
 	
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">   
          <property name = "dataSource" ref="dataSource"/>   

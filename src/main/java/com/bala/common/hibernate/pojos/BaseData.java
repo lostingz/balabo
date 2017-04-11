@@ -2,7 +2,7 @@
  * lostingz
  * Created on 2016年7月11日
  */
-package com.bala.core.hibernate.pojos;
+package com.bala.common.hibernate.pojos;
 
 import javax.persistence.Column;
 import javax.persistence.EnumType;
@@ -13,7 +13,7 @@ import javax.persistence.MappedSuperclass;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.bala.core.hibernate.type.DataStatus;
+import com.bala.common.hibernate.type.DataStatus;
 
 /**
  * @author lostingz<a href="mailto:18710833123@163.com">lostingz</a>
