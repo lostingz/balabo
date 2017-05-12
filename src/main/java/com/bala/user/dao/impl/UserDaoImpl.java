@@ -7,8 +7,7 @@ package com.bala.user.dao.impl;
 import java.util.List;
 import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
+import org.apache.commons.codec.digest.Sha2Crypt;
 import org.springframework.stereotype.Repository;
 
 import com.bala.common.hibernate.dao.BaseHibernateDao;
@@ -22,9 +21,6 @@ import com.google.common.base.Preconditions;
  */
 @Repository("userDao")
 public class UserDaoImpl extends BaseHibernateDao<User> implements UserDao {
-
-    @Autowired
-    private ShaPasswordEncoder passwordEncoder;
     
     @Override
     public User getUserByAccount(String account) {
@@ -36,7 +32,7 @@ public class UserDaoImpl extends BaseHibernateDao<User> implements UserDao {
     public void createUser(User u) {
         Preconditions.checkArgument(getUserByAccount(u.getAccount())==null,"用户名已经存在");
         u.setSalt(UUID.randomUUID().toString());
-        u.setPassword(passwordEncoder.encodePassword(u.getPassword(),u.getSalt()));
+        u.setPassword(Sha2Crypt.sha512Crypt(u.getPassword().getBytes(),u.getSalt()));
         save(u);
     }
 

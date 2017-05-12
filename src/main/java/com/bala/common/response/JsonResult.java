@@ -10,6 +10,7 @@ package com.bala.common.response;
  */
 public class JsonResult<T> {
     private String status;
+    private String msg;
     private T result;
 
     public JsonResult() {
@@ -28,6 +29,19 @@ public class JsonResult<T> {
     public JsonResult errorResult(T result) {
         this.result = result;
         this.status=ResponseStatus.FAIL.toString();
+        return this;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public JsonResult msg(String msg) {
+        this.msg = msg;
         return this;
     }
 

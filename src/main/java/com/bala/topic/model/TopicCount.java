@@ -30,4 +30,44 @@ public class TopicCount extends BaseData implements Serializable {
     private Integer sinks;
     @Column
     private Integer comments;
+
+    public Integer getViews() {
+        return views;
+    }
+
+    public void setViews(Integer views) {
+        this.views = views;
+    }
+
+    public Integer getLoves() {
+        return loves;
+    }
+
+    public void setLoves(Integer loves) {
+        this.loves = loves;
+    }
+
+    public Integer getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(Integer favorites) {
+        this.favorites = favorites;
+    }
+
+    public Integer getSinks() {
+        return sinks;
+    }
+
+    public void setSinks(Integer sinks) {
+        this.sinks = sinks;
+    }
+
+    public Integer getComments() {
+        return comments;
+    }
+
+    public void setComments(Integer comments) {
+        this.comments = comments;
+    }
 }

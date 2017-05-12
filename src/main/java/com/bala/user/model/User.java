@@ -49,6 +49,7 @@ public class User implements Serializable{
         super();
         this.account = account;
         this.password = password;
+        this.salt=String.valueOf(System.currentTimeMillis());
     }
 
     public User(String id, String account, String password) {
@@ -56,6 +57,7 @@ public class User implements Serializable{
         this.id = id;
         this.account = account;
         this.password = password;
+        this.salt=String.valueOf(System.currentTimeMillis());
     }
 
     public String getId() {

@@ -5,7 +5,6 @@
 package com.bala.topic.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -103,9 +102,5 @@ public class Topic extends BaseData implements Serializable{
 
     public void setWeight(Double weight) {
         this.weight = weight;
-    }
-
-    public static void main(String[] args) {
-        System.out.println((new Date().getTime()));
     }
 }
